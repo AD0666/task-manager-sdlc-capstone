@@ -3,6 +3,8 @@ dist/
 build/
 *.db
 *.sqlite
+*.db-shm
+*.db-wal
 .env
 .env.local
 coverage/
