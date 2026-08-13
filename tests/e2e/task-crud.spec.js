@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { ensureLoggedIn } from './helpers/auth';
 
 test.describe('Task CRUD', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await ensureLoggedIn(page);
     await expect(page.getByRole('heading', { name: 'Task Manager' })).toBeVisible();
   });
 

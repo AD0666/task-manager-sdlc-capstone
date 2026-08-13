@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { ensureLoggedIn } from './helpers/auth';
 
 async function createTask(page, { title, description = '', status = 'todo' }) {
   await page.getByPlaceholder('Task title').fill(title);
@@ -14,7 +15,7 @@ async function createTask(page, { title, description = '', status = 'todo' }) {
 
 test.describe('Search and Filter', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await ensureLoggedIn(page);
     await expect(page.getByTestId('search-filter-bar')).toBeVisible();
   });
 

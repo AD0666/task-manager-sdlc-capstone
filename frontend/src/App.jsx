@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
+import { apiFetch } from './api/client';
+import { useAuth } from './context/AuthContext';
+import AuthPage from './components/AuthPage';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import SearchFilterBar from './components/SearchFilterBar';
@@ -13,7 +16,8 @@ function buildTasksUrl({ status, search }) {
   return query ? `${API_BASE}?${query}` : API_BASE;
 }
 
-export default function App() {
+function TaskManagerApp() {
+  const { user, logout } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,9 +29,7 @@ export default function App() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch(buildTasksUrl(filters));
-      if (!res.ok) throw new Error('Failed to load tasks');
-      const data = await res.json();
+      const data = await apiFetch(buildTasksUrl(filters));
       setTasks(data);
     } catch (err) {
       setError(err.message);
@@ -43,42 +45,32 @@ export default function App() {
   const refreshTasks = () => fetchTasks({ status: statusFilter, search: searchQuery });
 
   const createTask = async (payload) => {
-    const res = await fetch(API_BASE, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) {
-      const body = await res.json();
-      throw new Error(body.error || 'Failed to create task');
-    }
+    await apiFetch(API_BASE, { method: 'POST', body: JSON.stringify(payload) });
     await refreshTasks();
   };
 
   const updateTask = async (id, payload) => {
-    const res = await fetch(`${API_BASE}/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) {
-      const body = await res.json();
-      throw new Error(body.error || 'Failed to update task');
-    }
+    await apiFetch(`${API_BASE}/${id}`, { method: 'PUT', body: JSON.stringify(payload) });
     setEditingTask(null);
     await refreshTasks();
   };
 
   const deleteTask = async (id) => {
-    const res = await fetch(`${API_BASE}/${id}`, { method: 'DELETE' });
-    if (!res.ok) throw new Error('Failed to delete task');
+    await apiFetch(`${API_BASE}/${id}`, { method: 'DELETE' });
     await refreshTasks();
   };
 
   return (
     <div>
-      <h1>Task Manager</h1>
-      <p className="task-meta">AI-Assistant-Driven SDLC capstone — Sprint 1: search &amp; filter</p>
+      <div className="app-header">
+        <div>
+          <h1>Task Manager</h1>
+          <p className="task-meta">Sprint 2: authentication — signed in as {user.name}</p>
+        </div>
+        <button type="button" className="secondary" data-testid="logout-button" onClick={logout}>
+          Logout
+        </button>
+      </div>
 
       {error && <div className="error">{error}</div>}
 
@@ -112,6 +104,16 @@ export default function App() {
           />
         )}
       </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <div>
+      {!isAuthenticated ? <AuthPage /> : <TaskManagerApp />}
     </div>
   );
 }
