@@ -142,6 +142,13 @@ See `docs/analysis/jira-stories.md` for full EPICs:
 - EPIC-5: Audit Trail
 - EPIC-6: Test Automation
 
+| Traceability Matrix | `docs/traceability-matrix.md` | Confluence > Traceability |
+
+## CodeMie HITL Demo
+
+Run the full capstone demo in CodeMie using **`docs/CODEMIE_HITL_RUNBOOK.md`** (gate-by-gate approvals G1–G8).  
+Reference colleague evidence: `capstone CodeMie/` folder.
+
 ## Confluence Mirror
 
 Copy these to your Confluence space:
@@ -153,6 +160,8 @@ Copy these to your Confluence space:
 | `docs/design/hld.md` | Design > HLD |
 | `docs/design/lld.md` | Design > LLD |
 | `docs/design/wireframes.md` | Design > Wireframes |
+| `docs/traceability-matrix.md` | Traceability Matrix |
+| `docs/CODEMIE_HITL_RUNBOOK.md` | (internal runbook — optional in Confluence) |
 
 ## License
 
