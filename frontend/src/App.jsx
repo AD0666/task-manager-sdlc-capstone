@@ -113,20 +113,8 @@ export default function App() {
           />
         )}
       </div>
-    </div>
-  );
-}
-<<<<<<< Updated upstream
-=======
 
-export default function App() {
-  const { isAuthenticated } = useAuth();
-
-  return (
-    <div>
-      {!isAuthenticated ? <AuthPage /> : <TaskManagerApp />}
       <Footer />
     </div>
   );
 }
->>>>>>> Stashed changes
