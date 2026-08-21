@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import SearchFilterBar from './components/SearchFilterBar';
+import Footer from './components/Footer';
 
 const API_BASE = '/api/tasks';
 
@@ -115,3 +116,17 @@ export default function App() {
     </div>
   );
 }
+<<<<<<< Updated upstream
+=======
+
+export default function App() {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <div>
+      {!isAuthenticated ? <AuthPage /> : <TaskManagerApp />}
+      <Footer />
+    </div>
+  );
+}
+>>>>>>> Stashed changes
