@@ -1,17 +1,44 @@
 # Jira Backlog — Task Manager Enhancements
 
-**Project Key:** TM (suggested)  
-**Import:** Copy stories into Jira or use CSV import  
-**Status:** Pending HITL Review
+**Project Key:** KAN  
+**Parent Epic:** [KAN-2](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-2) — [CAPSTONE] Task Manager AI-SDLC  
+**Confluence:** TMS — [Analysis Enhancements](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/720899/Analysis+Enhancements)  
+**Status:** Created in Jira — pending HITL review
 
 ---
 
-## EPIC-1: User Authentication
+## Traceability mapping (repo placeholder → Jira)
 
-**Summary:** TM-EPIC-1 User Authentication  
+| Repo placeholder | Jira key | Summary |
+|------------------|----------|---------|
+| Capstone epic | **KAN-2** | [CAPSTONE] Task Manager AI-SDLC |
+| TM-EPIC-1 | **KAN-3** | User Authentication |
+| TM-101 | **KAN-4** | User Registration |
+| TM-102 | **KAN-5** | User Login |
+| TM-103 | **KAN-6** | Protect Task API |
+| TM-EPIC-2 | **KAN-7** | Search and Filter |
+| TM-201 | **KAN-8** | Filter Tasks by Status |
+| TM-202 | **KAN-9** | Search Tasks by Keyword |
+| TM-203 | **KAN-10** | Filter by Due Date Range |
+| TM-EPIC-3 | **KAN-11** | Categories and Tags |
+| TM-301 | **KAN-12** | Assign Category to Task |
+| TM-EPIC-4 | **KAN-13** | Due Date Visibility |
+| TM-401 | **KAN-14** | Overdue Task Highlighting |
+| TM-EPIC-5 | **KAN-15** | Audit Trail |
+| TM-501 | **KAN-16** | Record Task Change History |
+| TM-EPIC-6 | **KAN-17** | QA Automation |
+| TM-601 | **KAN-18** | Baseline CRUD E2E Tests |
+
+---
+
+## KAN-3: User Authentication (Feature)
+
+**Jira:** [KAN-3](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-3)  
+**Legacy ref:** TM-EPIC-1  
+**Parent:** KAN-2  
 **Description:** Enable users to register, log in, and access their own task sessions. Foundation for multi-user support and audit trail.
 
-### TM-101: User Registration
+### KAN-4: User Registration (TM-101)
 
 **As a** new user  
 **I want** to register with email and password  
@@ -33,7 +60,7 @@
 
 ---
 
-### TM-102: User Login
+### KAN-5: User Login (TM-102)
 
 **As a** registered user  
 **I want** to log in with my credentials  
@@ -54,7 +81,7 @@
 
 ---
 
-### TM-103: Protect Task API
+### KAN-6: Protect Task API (TM-103)
 
 **As a** logged-in user  
 **I want** my tasks to be private  
@@ -74,12 +101,14 @@
 
 ---
 
-## EPIC-2: Search & Filter
+## KAN-7: Search and Filter (Feature)
 
-**Summary:** TM-EPIC-2 Search and Filter  
+**Jira:** [KAN-7](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-7)  
+**Legacy ref:** TM-EPIC-2  
+**Parent:** KAN-2  
 **Description:** Allow users to find tasks by keyword, status, and due date range.
 
-### TM-201: Filter Tasks by Status
+### KAN-8: Filter Tasks by Status (TM-201)
 
 **As a** user  
 **I want** to filter tasks by status  
@@ -99,7 +128,7 @@
 
 ---
 
-### TM-202: Search Tasks by Keyword
+### KAN-9: Search Tasks by Keyword (TM-202)
 
 **As a** user  
 **I want** to search tasks by title or description  
@@ -119,7 +148,7 @@
 
 ---
 
-### TM-203: Filter by Due Date Range
+### KAN-10: Filter by Due Date Range (TM-203)
 
 **As a** user  
 **I want** to filter tasks by due date  
@@ -139,12 +168,14 @@
 
 ---
 
-## EPIC-3: Task Categories/Tags
+## KAN-11: Categories and Tags (Feature)
 
-**Summary:** TM-EPIC-3 Categories and Tags  
+**Jira:** [KAN-11](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-11)  
+**Legacy ref:** TM-EPIC-3  
+**Parent:** KAN-2  
 **Description:** Organize tasks with categories or tags.
 
-### TM-301: Assign Category to Task
+### KAN-12: Assign Category to Task (TM-301)
 
 **As a** user  
 **I want** to assign a category to each task  
@@ -166,12 +197,14 @@
 
 ---
 
-## EPIC-4: Due Date Reminders
+## KAN-13: Due Date Visibility (Feature)
 
-**Summary:** TM-EPIC-4 Due Date Visibility  
+**Jira:** [KAN-13](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-13)  
+**Legacy ref:** TM-EPIC-4  
+**Parent:** KAN-2  
 **Description:** Highlight overdue tasks and sort by due date.
 
-### TM-401: Overdue Task Highlighting
+### KAN-14: Overdue Task Highlighting (TM-401)
 
 **As a** user  
 **I want** overdue tasks visually highlighted  
@@ -191,12 +224,14 @@
 
 ---
 
-## EPIC-5: Audit Trail
+## KAN-15: Audit Trail (Feature)
 
-**Summary:** TM-EPIC-5 Audit Trail  
+**Jira:** [KAN-15](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-15)  
+**Legacy ref:** TM-EPIC-5  
+**Parent:** KAN-2  
 **Description:** Track changes to tasks for accountability.
 
-### TM-501: Record Task Change History
+### KAN-16: Record Task Change History (TM-501)
 
 **As a** admin/user  
 **I want** to see history of task changes  
@@ -206,7 +241,7 @@
 - [ ] task_audit table: task_id, user_id, action, old_value, new_value, timestamp
 - [ ] CREATE, UPDATE, DELETE logged automatically
 - [ ] GET /api/tasks/:id/history returns audit entries
-- [ ] Requires authentication (EPIC-1)
+- [ ] Requires authentication (KAN-3)
 
 **Tasks:**
 - [ ] DB migration: task_audit table
@@ -218,12 +253,14 @@
 
 ---
 
-## EPIC-6: Test Automation (Cross-cutting)
+## KAN-17: QA Automation (Feature)
 
-**Summary:** TM-EPIC-6 QA Automation  
+**Jira:** [KAN-17](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-17)  
+**Legacy ref:** TM-EPIC-6  
+**Parent:** KAN-2  
 **Description:** Gherkin scenarios and Playwright E2E for baseline and enhancements.
 
-### TM-601: Baseline CRUD E2E Tests
+### KAN-18: Baseline CRUD E2E Tests (TM-601)
 
 **As a** QA engineer  
 **I want** automated E2E tests for task CRUD  
@@ -248,15 +285,16 @@
 
 | Sprint | Stories | Focus |
 |--------|---------|-------|
-| Sprint 1 | TM-601, TM-201, TM-202 | Tests + Search/Filter |
-| Sprint 2 | TM-101, TM-102, TM-103 | Authentication |
-| Sprint 3 | TM-301, TM-401 | Categories + Due dates |
-| Sprint 4 | TM-203, TM-501 | Date range + Audit |
+| Sprint 1 | KAN-18, KAN-8, KAN-9 | Tests + Search/Filter |
+| Sprint 2 | KAN-4, KAN-5, KAN-6 | Authentication |
+| Sprint 3 | KAN-12, KAN-14 | Categories + Due dates |
+| Sprint 4 | KAN-10, KAN-16 | Date range + Audit |
 
 ---
 
 ## HITL Sign-off
 
-- [ ] EPICs approved for Jira creation
+- [x] EPICs created in Jira under KAN-2 (KAN-3 … KAN-18)
 - [ ] Story points validated
 - [ ] Sprint plan accepted
+- [ ] Traceability mapping confirmed (see table above)

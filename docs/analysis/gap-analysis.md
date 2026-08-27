@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-The baseline Task Manager provides basic CRUD for tasks with title, description, status, and due date. It is suitable as a demo application but lacks enterprise features expected in production task-management tools. Five enhancement EPICs are recommended to demonstrate the full AI-driven SDLC pipeline.
+The baseline Task Manager provides basic CRUD for tasks with title, description, status, and due date. It is suitable as a demo application but lacks enterprise features expected in production task-management tools. **Six enhancement themes** are tracked in Jira under epic **[KAN-2](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-2)** (Authentication, Search/Filter, Categories/Tags, Due Date Visibility, Audit Trail, QA Automation) to demonstrate the full AI-driven SDLC pipeline.
 
 ---
 
@@ -101,7 +101,7 @@ The baseline Task Manager provides basic CRUD for tasks with title, description,
 - [ ] Approve gap findings
 - [ ] Confirm EPIC prioritization
 - [ ] Adjust scope if needed (add/remove EPICs)
-- [ ] Provide Jira project key for story import
+- [x] Jira project key confirmed: **KAN** (epic **KAN-2**, backlog **KAN-3 … KAN-18**)
 - [ ] Sign off to proceed to Planning phase
 
 ---
@@ -109,6 +109,6 @@ The baseline Task Manager provides basic CRUD for tasks with title, description,
 ## Next Steps
 
 1. Human reviews and approves this document
-2. Import stories from `jira-stories.md` into Jira
+2. Align repo docs with Jira keys (see `jira-stories.md` traceability table)
 3. Planning Assistant generates `docs/plan/implementation-plan.md`
-4. Mirror this document to Confluence FRD page
+4. Mirror this document to Confluence FRD page (TMS space)
