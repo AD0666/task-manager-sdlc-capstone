@@ -3,7 +3,37 @@ const fs = require('fs');
 const path = require('path');
 
 const DB_PATH = path.join(__dirname, '..', 'data', 'tasks.db');
-const MIGRATION_PATH = path.join(__dirname, '..', 'db', 'migrations', '001_init.sql');
+const MIGRATIONS_DIR = path.join(__dirname, '..', 'db', 'migrations');
+
+function runMigrations(db) {
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS schema_migrations (
+      id TEXT PRIMARY KEY,
+      applied_at TEXT NOT NULL DEFAULT (datetime('now'))
+    )
+  `);
+
+  const applied = new Set(
+    db.prepare('SELECT id FROM schema_migrations').all().map((row) => row.id)
+  );
+
+  const files = fs.readdirSync(MIGRATIONS_DIR).sort();
+  for (const file of files) {
+    if (!file.endsWith('.sql')) continue;
+    const id = file.replace('.sql', '');
+    if (applied.has(id)) continue;
+
+    const sql = fs.readFileSync(path.join(MIGRATIONS_DIR, file), 'utf8');
+    db.exec(sql);
+    db.prepare('INSERT INTO schema_migrations (id) VALUES (?)').run(id);
+  }
+
+  // Remove legacy tasks without an owner after auth migration
+  const taskCols = db.prepare('PRAGMA table_info(tasks)').all();
+  if (taskCols.some((col) => col.name === 'user_id')) {
+    db.exec('DELETE FROM tasks WHERE user_id IS NULL');
+  }
+}
 
 function initDb() {
   const dataDir = path.dirname(DB_PATH);
@@ -13,20 +43,7 @@ function initDb() {
 
   const db = new DatabaseSync(DB_PATH);
   db.exec('PRAGMA journal_mode = WAL');
-
-  const migration = fs.readFileSync(MIGRATION_PATH, 'utf8');
-  db.exec(migration);
-
-  const { count } = db.prepare('SELECT COUNT(*) AS count FROM tasks').get();
-  if (count === 0) {
-    const insert = db.prepare(`
-      INSERT INTO tasks (title, description, status, due_date) VALUES (?, ?, ?, ?)
-    `);
-    insert.run('Review project requirements', 'Read capstone brief and identify gaps', 'done', '2026-08-10');
-    insert.run('Set up development environment', 'Install Node.js and dependencies', 'in_progress', '2026-08-15');
-    insert.run('Implement task CRUD API', 'Basic REST endpoints for tasks', 'todo', '2026-08-20');
-  }
-
+  runMigrations(db);
   return db;
 }
 

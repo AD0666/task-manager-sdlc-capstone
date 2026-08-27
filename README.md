@@ -52,6 +52,17 @@ Output: `frontend/dist/`
 
 ## API Endpoints
 
+### Auth
+
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/auth/register` | Create account `{ name, email, password }` |
+| POST | `/api/auth/login` | Login `{ email, password }` → `{ token, user }` |
+
+All `/api/tasks` routes require `Authorization: Bearer <token>`.
+
+### Tasks
+
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | `/api/health` | Health check |

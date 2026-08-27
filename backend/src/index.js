@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const authRouter = require('./routes/auth');
 const tasksRouter = require('./routes/tasks');
 
 const app = express();
@@ -12,6 +13,7 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'task-manager-api' });
 });
 
+app.use('/api/auth', authRouter);
 app.use('/api/tasks', tasksRouter);
 
 app.use((_req, res) => {
