@@ -28,6 +28,22 @@
 | TM-501 | **KAN-16** | Record Task Change History |
 | TM-EPIC-6 | **KAN-17** | QA Automation |
 | TM-601 | **KAN-18** | Baseline CRUD E2E Tests |
+| — | **KAN-19** | UI Enhancement — Orange Login Button |
+
+---
+
+## KAN-19: Orange Login Button (UI Enhancement)
+
+**Jira:** [KAN-19](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-19)  
+**Parent:** KAN-2  
+**Summary:** Change Login submit button to orange (#ea580c); scoped CSS class `.login-submit`
+
+**Acceptance Criteria:**
+- [x] Login submit button orange; hover darker orange
+- [x] Register and other buttons unchanged
+- [x] E2E regression 13/13 PASS
+
+**Story Points:** 1
 
 ---
 
