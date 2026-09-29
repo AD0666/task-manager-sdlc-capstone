@@ -48,7 +48,7 @@ export default function LoginForm({ onSwitchToRegister }) {
         />
       </label>
 
-      <button type="submit" disabled={submitting}>
+      <button type="submit" className="login-submit" data-testid="login-submit" disabled={submitting}>
         {submitting ? 'Logging in...' : 'Log In'}
       </button>
 

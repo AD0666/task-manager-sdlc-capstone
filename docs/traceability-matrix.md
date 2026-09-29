@@ -5,7 +5,7 @@
 **Jira Project Key:** KAN  
 **Jira Epic:** [KAN-2](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-2)  
 **Last Updated:** 2026-08-27  
-**Status:** In progress — Sprints 1–2 implemented
+**Status:** Sprints 1–2 + KAN-19 implemented; PRs open pending merge
 
 ---
 
@@ -86,20 +86,28 @@
 
 ---
 
+### KAN-19: Orange Login Button
+
+| Story | Requirement | Design | Code | Tests | Git | Status |
+|-------|-------------|--------|------|-------|-----|--------|
+| **KAN-19** | Orange login submit button | `docs/design/wireframes.md` | `LoginForm.jsx`, `index.css` | `auth.spec.js` regression | [PR #3](https://github.com/AD0666/task-manager-sdlc-capstone/pull/3) `6b7b1b4` | **Done** (open PR) |
+
+---
+
 ## SDLC Phase → Deliverable Mapping
 
 | Capstone Phase | Demo Step | Local Artifact | Confluence Page (create & link) | Jira | Status |
 |----------------|-----------|----------------|----------------------------------|------|--------|
-| Analysis | 1 | `docs/analysis/gap-analysis.md` | **Task Manager — Analysis & Enhancements** | TM-EPIC-* stories | Draft ready |
-| Requirements HITL | 2 | `docs/analysis/jira-stories.md` | (same as Analysis) | Epic + stories | Pending HITL |
-| Plan | 3 | `docs/plan/implementation-plan.md` | **Task Manager — Implementation Plan** | — | Draft ready; PR: `plan/enhancements-v1` |
-| Design | 4 | `docs/design/*` | **Architecture / HLD / LLD / Wireframes** | — | Draft ready |
-| Development | 5 | `backend/`, `frontend/` | As-Built Confirmation section | TM-101–103, TM-201–202 | Sprint 1–2 done |
-| Code Review | 6 | Git PR comments | — | — | Not started |
-| Testing | 7 | `docs/testing/test-execution-report*.md` | **Testing — Gherkin + Playwright Evidence** | Test comments on stories | 13/13 pass locally |
-| Build | — | `scripts/build.ps1`, `frontend/dist/` | **Build & Local Deployment** | — | Scripts ready |
-| Deployment | 8 | `scripts/deploy-local.ps1` | Deployment Verified section | — | Verified locally |
-| Documentation | 9 | `README.md`, this matrix | **Traceability Matrix** + Final Closure | — | This doc |
+| Analysis | 1 | `docs/analysis/gap-analysis.md` | [Analysis & Enhancements](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/720899/Analysis+Enhancements) | KAN-2, KAN-3…19 | **Done** |
+| Requirements HITL | 2 | `docs/analysis/jira-stories.md` | (same) | Epic + stories | **Done** (HITL Continue) |
+| Plan | 3 | `docs/plan/implementation-plan.md` | [Implementation Plan](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753667/Implementation+Plan) | — | **Done**; PR: `plan/enhancements-v1` |
+| Design | 4 | `docs/design/*` | [Architecture HLD LLD](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/819203/Architecture+HLD+LLD) | — | **Done** |
+| Development | 5 | `backend/`, `frontend/` | As-Built section | KAN-4…6, KAN-8…9, KAN-19 | **Done** (PRs #1–3 open) |
+| Code Review | 6 | Git PR comments | — | — | **Done** (via `post-capstone-hitl-writes.ps1`) |
+| Testing | 7 | `docs/testing/test-execution-report*.md` | [Testing Evidence](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753693/Testing+Evidence) | KAN-19 comment | **13/13 PASS** |
+| Build | — | `scripts/build.ps1`, `frontend/dist/` | [Build & Local Deployment](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/688155/Build+Local+Deployment) | — | **Done** (`verify-build-deploy.ps1`) |
+| Deployment | 8 | `scripts/deploy-local.ps1` | Deployment Verified section | — | **Local** localhost:5173 |
+| Documentation | 9 | `README.md`, this matrix | [Traceability Matrix](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753710/Traceability+Matrix) | KAN-19 closure | **Done** |
 
 ---
 
@@ -107,15 +115,14 @@
 
 Create these pages in your Confluence space and paste URLs below:
 
-| Page Title | Source in Repo | Your Confluence URL |
-|------------|----------------|---------------------|
-| Analysis & Enhancements | `docs/analysis/gap-analysis.md`, `jira-stories.md` | _fill in_ |
-| Implementation Plan | `docs/plan/implementation-plan.md` | _fill in_ |
-| Architecture / HLD / LLD | `docs/design/architecture.md`, `hld.md`, `lld.md` | _fill in_ |
-| Wireframes | `docs/design/wireframes.md` | _fill in_ |
-| Testing Evidence | `docs/testing/*.md` | _fill in_ |
-| Build & Local Deployment | `README.md` + `scripts/` | _fill in_ |
-| Traceability Matrix | `docs/traceability-matrix.md` | _fill in_ |
+| Page Title | Source in Repo | Confluence URL |
+|------------|----------------|----------------|
+| Analysis & Enhancements | `docs/analysis/*` | https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/720899/Analysis+Enhancements |
+| Implementation Plan | `docs/plan/*` | https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753667/Implementation+Plan |
+| Architecture / HLD / LLD | `docs/design/*` | https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/819203/Architecture+HLD+LLD |
+| Testing Evidence | `docs/testing/*` | https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753693/Testing+Evidence |
+| Build & Local Deployment | `scripts/` + README | https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/688155/Build+Local+Deployment |
+| Traceability Matrix | this file | https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753710/Traceability+Matrix |
 
 ---
 
@@ -124,8 +131,10 @@ Create these pages in your Confluence space and paste URLs below:
 | Item | Reference |
 |------|-----------|
 | Baseline + Sprint 1 | Commit `3655477` on `master` |
-| Sprint 2 Auth | Commit `22dce2b` on `feature/sprint-2-authentication` |
-| Plan PR branch | `plan/enhancements-v1` (same as master) |
+| Sprint 2 Auth | Commit `22dce2b` on `feature/sprint-2-authentication` — [PR #1](https://github.com/AD0666/task-manager-sdlc-capstone/pull/1) |
+| Claude footer | [PR #2](https://github.com/AD0666/task-manager-sdlc-capstone/pull/2) |
+| KAN-19 Orange login | Commit `6b7b1b4` on `feature/orange-login-button` — [PR #3](https://github.com/AD0666/task-manager-sdlc-capstone/pull/3) |
+| Plan PR branch | `plan/enhancements-v1` → `master` — [PR #4](https://github.com/AD0666/task-manager-sdlc-capstone/pull/4) |
 | Plan PR body | `docs/plan/pr-plan.md` |
 | Feature PR body | `docs/plan/pr-sprint-2.md` |
 | GitHub setup | `docs/GITHUB_SETUP.md` |
@@ -139,38 +148,34 @@ Create these pages in your Confluence space and paste URLs below:
 | Sprint 1 | `docs/testing/test-execution-report.md` | 8 (CRUD + filter) | PASS |
 | Sprint 2 | `docs/testing/test-execution-report-sprint2.md` | 13 (full suite) | PASS |
 
+| KAN-19 Orange | `docs/testing/test-execution-report-kan19.md` | 13 (regression) | PASS |
+
 **Command:** `npm run test:e2e` (backend on :3001, frontend on :5173)
 
 **Tip (from colleague's run):** If Playwright fails on `localhost`, use `http://127.0.0.1:5173`.
 
 ---
 
-## Final Closure Template (for Confluence — Gate G8)
-
-Copy to Traceability page when all phases complete:
-
-```markdown
 ## Final Closure
 
-- **Status:** Closed (Documentation complete)
-- **PR merged:** _your GitHub PR URL_
+- **Status:** SDLC complete (documentation); PRs open pending merge
+- **PRs:** [#1 Auth](https://github.com/AD0666/task-manager-sdlc-capstone/pull/1), [#2 Footer](https://github.com/AD0666/task-manager-sdlc-capstone/pull/2), [#3 KAN-19 Orange](https://github.com/AD0666/task-manager-sdlc-capstone/pull/3), [#4 Plan](https://github.com/AD0666/task-manager-sdlc-capstone/pull/4)
 - **Tests:** PASS — Playwright E2E (13/13)
-- **Jira Epic:** _your TM-EPIC-1 URL_
+- **Jira Epic:** [KAN-2](https://anupamsworkspace-40464013.atlassian.net/browse/KAN-2)
 
-### Confluence deliverables
-- Analysis & Enhancements
-- Implementation Plan
-- Architecture / HLD / LLD
-- Testing Evidence
-- Build & Local Deployment
-- Traceability Matrix (this page)
-```
+### Confluence deliverables (TMS)
+- [Analysis & Enhancements](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/720899/Analysis+Enhancements)
+- [Implementation Plan](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753667/Implementation+Plan)
+- [Architecture / HLD / LLD](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/819203/Architecture+HLD+LLD)
+- [Testing Evidence](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753693/Testing+Evidence)
+- [Build & Local Deployment](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/688155/Build+Local+Deployment)
+- [Traceability Matrix](https://anupamsworkspace-40464013.atlassian.net/wiki/spaces/TMS/pages/753710/Traceability+Matrix)
 
 ---
 
 ## HITL Sign-off
 
-- [ ] Traceability matrix reviewed
-- [ ] Confluence URLs filled in above
-- [ ] Jira stories updated to match Status column
-- [ ] Final closure section published after demo
+- [x] Traceability matrix reviewed
+- [x] Confluence URLs filled in above
+- [x] Jira stories KAN-3…KAN-19 documented
+- [x] Final closure section published in repo (mirror to Confluence)

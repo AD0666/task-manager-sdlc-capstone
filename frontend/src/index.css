@@ -91,6 +91,15 @@ button.danger:hover {
   background: #b91c1c;
 }
 
+button.login-submit {
+  background: #ea580c;
+  color: #fff;
+}
+
+button.login-submit:hover {
+  background: #c2410c;
+}
+
 .task-list {
   list-style: none;
   padding: 0;
